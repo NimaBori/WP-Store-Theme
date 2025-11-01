@@ -1,5 +1,10 @@
 {
     "intelephense.stubs": [
+        "core",
         "wordpress"
+    ],
+    "intelephense.environment.includePaths": [
+        "/path/to/your/local/wordpress/wp-includes",
+        "/path/to/your/local/wordpress/wp-admin"
     ]
 }
