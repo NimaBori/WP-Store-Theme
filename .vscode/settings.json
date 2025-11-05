@@ -3,8 +3,17 @@
         "core",
         "wordpress"
     ],
+    // For better autocompletion, you can update these paths 
+    // to point to your actual local WordPress installation.
     "intelephense.environment.includePaths": [
-        "/path/to/your/local/wordpress/wp-includes",
-        "/path/to/your/local/wordpress/wp-admin"
-    ]
+        "/Applications/XAMPP/xamppfiles/htdocs/wordpress/wp-includes",
+        "/Applications/XAMPP/xamppfiles/htdocs/wordpress/wp-admin"
+    ],
+    // Tell VS Code where to find the PHP executable, pointing to the real file not the symlink
+    "php.validate.executablePath": "/Applications/XAMPP/xamppfiles/bin/php-8.2.4",
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+        "editor.formatOnSave": true
+    },
+    "intelephense.format.enable": true
 }
