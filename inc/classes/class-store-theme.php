@@ -10,51 +10,60 @@ namespace Store\Inc;
 
 use Store\Inc\Traits\Singleton;
 
-class STORE_THEME {
+class STORE_THEME
+{
   use Singleton;
 
-    public function __construct() {     
-      
-      // Load class.
-      Assets::get_instance();
-      Menus::get_instance();
+  public function __construct()
+  {
 
-      $this->setup_hooks();
+    // Load class.
+    Assets::get_instance();
+    Menus::get_instance();
+    Meta_Boxes::get_instance();
+
+    $this->setup_hooks();
   }
 
-  protected function setup_hooks() {
+  protected function setup_hooks()
+  {
     // Actions and Filters
 
-    add_action( 'after_setup_theme', [ $this, 'setup_theme' ] );    
-    
+    add_action('after_setup_theme', [$this, 'setup_theme']);
   }
 
-  public function setup_theme() {
+  public function setup_theme()
+  {
     // Add theme support features
-    add_theme_support( 'title-tag' );
+    add_theme_support('title-tag');
 
-    add_theme_support( 'custom-logo', [
-      'header-text' => [ 'site-title', 'site-description' ],
+    add_theme_support('custom-logo', [
+      'header-text' => ['site-title', 'site-description'],
       'height'      => 100,
       'width'       => 400,
       'flex-height' => true,
       'flex-width'  => true,
-    ] );
+    ]);
 
-    add_theme_support( 'custom-background', [
+    add_theme_support('custom-background', [
       'default-color' => 'ffffff',
       'default-image' => '',
       'default-repeat' => 'no-repeat',
       'default-position-x' => 'center',
-    ] );
+    ]);
 
-    add_theme_support( 'post-thumbnails' );
+    add_theme_support('post-thumbnails');
 
-    add_theme_support( 'customize-selective-refresh-widgets' );
+    /**
+     * Registering different image sizes for the theme
+     */
+    add_image_size('featured-thumbnail', 374, 262, true);
 
-    add_theme_support( 'automatic-feed-links' );
+    add_theme_support('customize-selective-refresh-widgets');
 
-    add_theme_support( 'html5', [
+    add_theme_support('automatic-feed-links');
+
+    add_theme_support('html5', [
       'search-form',
       'comment-form',
       'comment-list',
@@ -62,16 +71,16 @@ class STORE_THEME {
       'caption',
       'style',
       'script',
-    ] );
-    
-    add_editor_style( );
-    add_theme_support( 'wp-block-styles' );
-    add_theme_support( 'align-wide' );
+    ]);
+
+    add_editor_style();
+    add_theme_support('wp-block-styles');
+    add_theme_support('align-wide');
 
     global $content_width;
-    if ( ! isset( $content_width ) ) {
+    if (! isset($content_width)) {
       $content_width = 1240; // max width in pixels
 
-     }
+    }
   }
 }

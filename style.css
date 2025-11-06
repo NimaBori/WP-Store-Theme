@@ -13,3 +13,18 @@ Tested up to: WordPress 6.2
 Requires PHP: 7.0
 Text Domain: store
 */
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Hide the "Updated" label for unpublished posts */
+.updated:not(.published) {
+  display: none;
+}
+
+/* Dropdown menu on hover */
+.nav-item:hover .dropdown-menu:not(.show) {
+  display: block;
+}
